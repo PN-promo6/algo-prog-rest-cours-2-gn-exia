@@ -1,6 +1,6 @@
 const users = [
     {
-        "id": "5eaecda0cba960e77fc9f205",
+        "id": "1",
         "age": 29,
         "name": "Lesa Clark",
         "gender": "female",
@@ -11,7 +11,7 @@ const users = [
         "longitude": 101.274002
     },
     {
-        "id": "5eaecda01070c34da892e9e5",
+        "id": "2",
         "age": 34,
         "name": "Marsha Hansen",
         "gender": "female",
@@ -22,7 +22,7 @@ const users = [
         "longitude": 2.408834
     },
     {
-        "id": "5eaecda01865876300aada64",
+        "id": "3",
         "age": 28,
         "name": "Peck Johnson",
         "gender": "male",
@@ -33,7 +33,7 @@ const users = [
         "longitude": 33.309041
     },
     {
-        "id": "5eaecda0d132e8d506850631",
+        "id": "4",
         "age": 30,
         "name": "Myrna Case",
         "gender": "female",
@@ -44,7 +44,7 @@ const users = [
         "longitude": 3.366088
     },
     {
-        "id": "5eaecda010a868687280ce28",
+        "id": "4",
         "age": 24,
         "name": "Kelli Alston",
         "gender": "female",
@@ -55,7 +55,7 @@ const users = [
         "longitude": -175.994997
     },
     {
-        "id": "5eaecda0b40f4682d97117fb",
+        "id": "5",
         "age": 31,
         "name": "Bates Johnston",
         "gender": "male",
@@ -66,7 +66,7 @@ const users = [
         "longitude": -0.632594
     },
     {
-        "id": "5eaecda099f2a9c328ec3603",
+        "id": "6",
         "age": 25,
         "name": "Mariana Monroe",
         "gender": "female",
@@ -77,7 +77,7 @@ const users = [
         "longitude": 131.753915
     },
     {
-        "id": "5eaecda0fd696b8f0e33a6db",
+        "id": "7",
         "age": 29,
         "name": "Letitia Andrews",
         "gender": "female",
@@ -88,7 +88,7 @@ const users = [
         "longitude": -153.088186
     },
     {
-        "id": "5eaecda0d01513c7cbbcffa4",
+        "id": "8",
         "age": 37,
         "name": "Dina Buchanan",
         "gender": "female",
@@ -99,7 +99,7 @@ const users = [
         "longitude": 149.910409
     },
     {
-        "id": "5eaecda0ba6003ab1113ceac",
+        "id": "9",
         "age": 30,
         "name": "Lottie Walters",
         "gender": "female",
@@ -124,4 +124,18 @@ app.listen(3000);
 
 app.get('/users', function (req, res) {
     res.send(users);
+});
+
+app.get('/users/:id', function (req, res) {
+    let id = req.params.id;
+    for (let i = 0; i < users.length; i++) {
+        let currentUser = users[i];
+
+        if (currentUser.id == id) {
+            res.send(currentUser);
+            break;
+        }
+    }
+    res.statusMessage = "User not Found";
+    res.status(404).end();
 });

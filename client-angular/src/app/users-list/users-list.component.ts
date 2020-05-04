@@ -25,5 +25,18 @@ export class UsersListComponent implements OnInit {
         }
       );
 
+    this.dataService.getUserById()
+      .subscribe(
+        res => {
+          // console.log(res);
+          console.log(res);
+
+        },
+        error => {
+          console.log(error);
+
+        }
+      );
+
   };
 }
