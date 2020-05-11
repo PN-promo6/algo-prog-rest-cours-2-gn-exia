@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from "../services/data-service/data.service";
 
+import { User } from "../models/user/user";
+
 @Component({
   selector: 'app-users-list',
   templateUrl: './users-list.component.html',
@@ -10,7 +12,7 @@ export class UsersListComponent implements OnInit {
 
   constructor(private dataService: DataService) { }
 
-  users: any[];
+  public users: User[];
 
   ngOnInit() {
     this.dataService.fetchUsers()
@@ -25,7 +27,7 @@ export class UsersListComponent implements OnInit {
         }
       );
 
-    this.dataService.getUserById()
+    this.dataService.getUserById("1")
       .subscribe(
         res => {
           // console.log(res);
