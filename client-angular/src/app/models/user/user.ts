@@ -6,6 +6,5 @@ export class User {
     company: string
     email: string
     phone: string
-    latitude: number
-    longitude: number
+    photo: string
 }
